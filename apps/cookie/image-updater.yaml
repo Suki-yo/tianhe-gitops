@@ -7,13 +7,13 @@ spec:
   commonUpdateSettings:
     pullSecret: "pullsecret:argocd/ghcr-creds"
   applicationRefs:
-    - name: cookie-api
+    - namePattern: cookie-api
       images:
         - alias: cookie-api
           imageName: ghcr.io/suki-yo/cookie-api
           updateStrategy:
             type: newest-build
-    - name: cookie-web
+    - namePattern: cookie-web
       images:
         - alias: cookie-web
           imageName: ghcr.io/suki-yo/cookie-web
