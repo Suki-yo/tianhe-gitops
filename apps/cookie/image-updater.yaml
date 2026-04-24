@@ -1,0 +1,27 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: cookie-image-updater
+  namespace: argocd
+spec:
+  commonUpdateSettings:
+    pullSecret: "pullsecret:argocd/ghcr-creds"
+  applicationRefs:
+    - name: cookie-api
+      images:
+        - alias: cookie-api
+          imageName: ghcr.io/suki-yo/cookie-api
+          updateStrategy:
+            type: newest-build
+    - name: cookie-web
+      images:
+        - alias: cookie-web
+          imageName: ghcr.io/suki-yo/cookie-web
+          updateStrategy:
+            type: newest-build
+  writeBackConfig:
+    method: git
+    gitConfig:
+      branch: main
+      writeBackTarget: "helmvalues:values.yaml"
+      gitCredentials: "secret:argocd/git-creds"
