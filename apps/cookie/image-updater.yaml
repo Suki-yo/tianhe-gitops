@@ -20,8 +20,7 @@ spec:
           commonUpdateSettings:
             updateStrategy: newest-build
   writeBackConfig:
-    method: git
+    method: "git:secret:argocd/git-creds"
     gitConfig:
       branch: main
       writeBackTarget: "helmvalues:values.yaml"
-      gitCredentials: "secret:argocd/git-creds"
