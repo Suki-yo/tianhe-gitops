@@ -11,14 +11,14 @@ spec:
       images:
         - alias: cookie-api
           imageName: ghcr.io/suki-yo/cookie-api
-          updateStrategy:
-            type: newest-build
+          commonUpdateSettings:
+            updateStrategy: newest-build
     - namePattern: cookie-web
       images:
         - alias: cookie-web
           imageName: ghcr.io/suki-yo/cookie-web
-          updateStrategy:
-            type: newest-build
+          commonUpdateSettings:
+            updateStrategy: newest-build
   writeBackConfig:
     method: git
     gitConfig:
