@@ -13,12 +13,20 @@ spec:
           imageName: ghcr.io/suki-yo/cookie-api
           commonUpdateSettings:
             updateStrategy: newest-build
+          manifestTargets:
+            helm:
+              name: image.repository
+              tag: image.tag
     - namePattern: cookie-web
       images:
         - alias: cookie-web
           imageName: ghcr.io/suki-yo/cookie-web
           commonUpdateSettings:
             updateStrategy: newest-build
+          manifestTargets:
+            helm:
+              name: image.repository
+              tag: image.tag
   writeBackConfig:
     method: "git:secret:argocd/git-creds"
     gitConfig:
